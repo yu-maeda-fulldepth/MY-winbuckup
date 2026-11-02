@@ -2,6 +2,10 @@
 # scripts\schedule_task.ps1 - Windows タスクスケジューラ登録＆管理
 # ==============================================================================
 
+param(
+    [string]$Option = ""
+)
+
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $OutputEncoding = [System.Text.Encoding]::UTF8
 
@@ -25,17 +29,20 @@ if ($existingTask) {
     Write-Host "【未登録】" -ForegroundColor Yellow
 }
 
-Write-Host ""
-Write-Host "実行したい操作の番号を入力してください:" -ForegroundColor Cyan
-Write-Host "  [1] 毎週月曜日 09:00 に自動実行するタスクを登録 (推奨)"
-Write-Host "  [2] 毎日 18:00 (退勤時) に自動実行するタスクを登録"
-Write-Host "  [3] PCログオン時 (起動時) に自動実行するタスクを登録"
-Write-Host "  [4] 既存の自動タスクを解除 (削除) する"
-Write-Host "  [Q] 何もせず終了"
-Write-Host ""
+$choice = $Option
+if ([string]::IsNullOrWhiteSpace($choice)) {
+    Write-Host ""
+    Write-Host "実行したい操作の番号を入力してください:" -ForegroundColor Cyan
+    Write-Host "  [1] 毎週月曜日 09:00 に自動実行するタスクを登録 (推奨)"
+    Write-Host "  [2] 毎日 18:00 (退勤時) に自動実行するタスクを登録"
+    Write-Host "  [3] PCログオン時 (起動時) に自動実行するタスクを登録"
+    Write-Host "  [4] 既存の自動タスクを解除 (削除) する"
+    Write-Host "  [Q] 何もせず終了"
+    Write-Host ""
 
-$choice = Read-Host "選択 (1/2/3/4/Q) [初期値: 1]"
-if ([string]::IsNullOrWhiteSpace($choice)) { $choice = "1" }
+    $choice = Read-Host "選択 (1/2/3/4/Q) [初期値: 1]"
+    if ([string]::IsNullOrWhiteSpace($choice)) { $choice = "1" }
+}
 
 if ($choice -eq 'Q' -or $choice -eq 'q') {
     Write-Info "終了します。"
@@ -87,7 +94,7 @@ $settings = New-ScheduledTaskSettingsSet `
     -StartWhenAvailable `
     -RunOnlyIfNetworkAvailable
 
-# 登録 (最高特権・管理者権限で実行)
+# 登録 (管理者権限があればHighest、一般権限ならLimited)
 try {
     # 既存があれば先に削除
     if ($existingTask) {
@@ -95,6 +102,11 @@ try {
     }
 
     $currentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+    $runLevel = "Limited"
+    if (Test-IsAdmin) {
+        $runLevel = "Highest"
+    }
+
     Register-ScheduledTask `
         -TaskName $taskName `
         -Description "Windows環境バックアップを自動更新し、GitHub (MY-winbuckup) へ自動プッシュします。" `
@@ -102,10 +114,11 @@ try {
         -Trigger $trigger `
         -Settings $settings `
         -User $currentUser `
-        -RunLevel Highest | Out-Null
+        -RunLevel $runLevel | Out-Null
 
-    Write-Success "タスク スケジューラに [$taskName] を正常に登録しました！"
+    Write-Success "タスク スケジューラに [$taskName] を正常に登録しました！ (実行レベル: $runLevel)"
     Write-Host "※ 指定時刻にPCが起動していなかった場合も、次回起動時に自動で実行されます。" -ForegroundColor Cyan
 } catch {
     Write-ErrorMessage "タスク登録中にエラーが発生しました: $_"
+    Write-WarningMessage "管理者権限が必要な場合があります。『SCHEDULE_AUTO_BACKUP.bat』を右クリックして『管理者として実行』してください。"
 }
