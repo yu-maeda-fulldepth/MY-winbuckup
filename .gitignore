@@ -1,0 +1,28 @@
+# ==============================================================================
+# .gitignore - Git除外設定
+# ==============================================================================
+
+# 大容量インストーラー (GitHubの100MB制限超過防止)
+# ローカルまたは外付けSSD/USBメモリで保持してください
+custom_installers/*.exe
+custom_installers/*.msi
+custom_installers/*.zip
+custom_installers/*/
+!custom_installers/README.md
+
+# 大容量デバイスドライバ (Intel GraphicsやPC固有ドライバで100MB超のファイルがあるため)
+# ローカルまたは外付けSSD/USBメモリで保持してください
+data/drivers/
+
+# 実行ログ
+logs/*.log
+
+# ショートカット
+*.lnk
+
+# 一時ファイル
+*.tmp
+*.bak
+~*
+thumbs.db
+desktop.ini

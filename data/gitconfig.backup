@@ -1,0 +1,11 @@
+[user]
+	name = yu maeda
+	email = yu.maeda@fulldepth.co.jp
+[core]
+	autocrlf = true
+[difftool "sourcetree"]
+	cmd = "'' "
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = false
+	keepBackup = false

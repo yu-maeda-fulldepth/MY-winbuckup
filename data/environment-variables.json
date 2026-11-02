@@ -1,0 +1,28 @@
+﻿{
+    "User":  {
+                 "Path":  "C:\\Users\\YuMaeda\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\YuMaeda\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\YuMaeda\\AppData\\Local\\Python\\bin;C:\\Users\\YuMaeda\\AppData\\Local\\Programs\\Antigravity IDE\\bin;C:\\Users\\YuMaeda\\AppData\\Roaming\\npm;C:\\Users\\YuMaeda\\AppData\\Local\\nodejs;C:\\Users\\YuMaeda\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Google.PlatformTools_Microsoft.Winget.Source_8wekyb3d8bbwe\\platform-tools;C:\\Users\\YuMaeda\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg.Essentials_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0.1-essentials_build\\bin;C:\\Users\\YuMaeda\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0.2-full_build\\bin;",
+                 "TEMP":  "C:\\Users\\YuMaeda\\AppData\\Local\\Temp",
+                 "OneDrive":  "C:\\Users\\YuMaeda\\OneDrive",
+                 "TMP":  "C:\\Users\\YuMaeda\\AppData\\Local\\Temp"
+             },
+    "BackupDate":  "2026-11-02 21:14:00",
+    "Machine":  {
+                    "PROCESSOR_REVISION":  "ba02",
+                    "ComSpec":  "C:\\Windows\\system32\\cmd.exe",
+                    "TEMP":  "C:\\Windows\\TEMP",
+                    "PROCESSOR_LEVEL":  "6",
+                    "USERNAME":  "SYSTEM",
+                    "JAVA_HOME":  "C:\\Program Files\\Microsoft\\jdk-17.0.20.101-hotspot\\",
+                    "DriverData":  "C:\\Windows\\System32\\Drivers\\DriverData",
+                    "PATHEXT":  ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+                    "Path":  "C:\\Program Files\\Microsoft\\jdk-17.0.20.101-hotspot\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\Git\\cmd",
+                    "NUMBER_OF_PROCESSORS":  "16",
+                    "ZES_ENABLE_SYSMAN":  "1",
+                    "TMP":  "C:\\Windows\\TEMP",
+                    "windir":  "C:\\Windows",
+                    "PROCESSOR_ARCHITECTURE":  "AMD64",
+                    "PSModulePath":  "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules",
+                    "PROCESSOR_IDENTIFIER":  "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+                    "OS":  "Windows_NT"
+                }
+}
